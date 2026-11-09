@@ -8,7 +8,7 @@ interface HeroProps {
 
 export default function Hero({ onOpenProjects, onOpenResume }: HeroProps) {
   return (
-    <section className="relative w-full flex-1 flex items-center justify-center px-6 py-4 overflow-hidden">
+    <section id="hero" className="relative w-full min-h-[calc(100vh-76px)] flex items-center justify-center px-6 py-12 lg:py-16">
       <div className="container mx-auto max-w-7xl relative z-10 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
         {/* Left Content */}

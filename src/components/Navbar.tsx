@@ -19,10 +19,17 @@ export default function Navbar({ onOpenSection }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="relative z-50 w-full py-4 bg-[#F5F5F5]/85 backdrop-blur-xl border-b border-slate-200/80 shadow-sm">
+    <header className="sticky top-0 z-50 w-full py-3.5 bg-[#F5F5F5]/90 backdrop-blur-xl border-b border-slate-200/80 shadow-xs">
       <div className="container mx-auto px-6 max-w-7xl flex items-center justify-between">
         <div className="text-xl sm:text-2xl font-display font-bold">
-          <a href="#" className="flex items-center gap-2.5">
+          <a 
+            href="#" 
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="flex items-center gap-2.5"
+          >
             <img src="/profile.jpg" alt="Profile" className="w-8 h-8 rounded-lg object-cover border border-slate-300 shadow-sm" />
             <span className="inline-block text-slate-900 font-bold">Shek Haripoon</span>
           </a>

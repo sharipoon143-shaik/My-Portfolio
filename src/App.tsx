@@ -17,7 +17,16 @@ export default function App() {
   const [activeModal, setActiveModal] = useState<ModalType>(null);
 
   const handleOpenSection = (section: string) => {
-    setActiveModal(section as ModalType);
+    if (section === 'resume') {
+      setActiveModal('resume');
+      return;
+    }
+    const element = document.getElementById(section);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      setActiveModal(section as ModalType);
+    }
   };
 
   const closeModal = () => {
@@ -34,7 +43,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="h-screen w-screen overflow-hidden bg-[#F5F5F5] relative selection:bg-blue-600/20 selection:text-blue-600 flex flex-col justify-between">
+    <div className="min-h-screen w-full bg-[#F5F5F5] relative selection:bg-blue-600/20 selection:text-blue-600 flex flex-col">
       {/* Global Background Effects for Smoke White */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[45%] h-[45%] rounded-full bg-blue-300/20 blur-[130px]" />
@@ -44,13 +53,19 @@ export default function App() {
       {/* Top Navbar */}
       <Navbar onOpenSection={handleOpenSection} />
 
-      {/* Main Single-Screen Hero View - No Scroll */}
-      <main className="relative z-10 flex-1 flex flex-col items-center justify-center w-full overflow-hidden">
+      {/* Main Continuous Scrolling Sections */}
+      <main className="relative z-10 flex flex-col items-center w-full">
         <Hero 
           onOpenProjects={() => handleOpenSection('projects')} 
           onOpenContact={() => handleOpenSection('contact')} 
           onOpenResume={() => setActiveModal('resume')}
         />
+        <About />
+        <Education />
+        <Skills />
+        <Projects />
+        <Experience />
+        <Contact />
       </main>
 
       {/* Compact Bottom Footer */}

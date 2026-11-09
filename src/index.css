@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 @layer base {
-  html, body, #root {
-    @apply h-full overflow-hidden;
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-background text-slate-700 selection:bg-primary/20 selection:text-primary;
+    @apply bg-background text-slate-700 selection:bg-primary/20 selection:text-primary overflow-x-hidden;
     background-color: #F5F5F5;
   }
   
